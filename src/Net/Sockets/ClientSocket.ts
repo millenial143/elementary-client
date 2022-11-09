@@ -1,6 +1,6 @@
 import {io, Socket} from "socket.io-client";
 import App from "../../App";
-
+// test
 export default class ClientSocket{
     static socket: Socket | undefined;
     private static lobby: string | undefined = undefined;
