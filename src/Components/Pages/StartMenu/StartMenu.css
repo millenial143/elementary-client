@@ -1,0 +1,19 @@
+.start-menu-item{
+    font-size: 25px;
+    color: cornsilk;
+    padding: 10px;
+    border: 1px solid cornsilk;
+    background-color: #131415;
+    cursor: pointer;
+}
+.start-menu-items{
+
+    margin: auto;
+    margin-top: 250px;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}

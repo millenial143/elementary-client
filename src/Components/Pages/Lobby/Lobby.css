@@ -1,0 +1,62 @@
+.players-window{
+    height: 600px;
+    width: 800px;
+    margin: auto;
+    margin-top: 100px;
+    background-color: #131415;
+    border: 1px solid cornsilk;
+}
+
+.players-window.loading{
+    display: flex;
+    justify-content: center;
+    color: cornsilk;
+}
+
+.players-window.loaded{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: cornsilk;
+}
+
+.players-window>div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: cornsilk;
+    height: 35px;
+    border: 1px solid cornsilk;
+}
+
+.lobby-buttons{
+    width: 800px;
+    height: 40px;
+    margin: auto;
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.lobby-buttons .lobby-page-button{
+    width: 140px;
+    background-color: #131415;
+    border: 1px solid cornsilk;
+    color: cornsilk;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.new-lobby-button{
+    margin-left: 11px;
+}

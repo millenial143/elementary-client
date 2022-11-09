@@ -1,0 +1,36 @@
+{
+  "name": "telecom-oil-test-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx webpack serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/pixi.js": "^5.0.0",
+    "typescript": "^4.8.3",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "@types/sockjs-client": "^1.5.1",
+    "@types/stompjs": "^2.3.5",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "http-proxy-middleware": "^2.0.6",
+    "net": "^1.0.2",
+    "pixi.js": "^7.0.0",
+    "socket.io": "^4.5.3",
+    "socket.io-client": "^4.5.3",
+    "sockjs": "^0.3.24",
+    "sockjs-client": "^1.6.1",
+    "stompjs": "^2.3.3",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.3.1",
+    "webpack": "^5.74.0",
+    "webpack-dev-server": "^4.11.0"
+  }
+}
