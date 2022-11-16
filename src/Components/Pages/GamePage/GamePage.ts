@@ -1,17 +1,24 @@
 import Component from "../../index";
 import Game from "../../../Game/Game";
 
+import './GamePage.css';
+
 export default class GamePage extends Component{
 
-    private game;
+    private endTurnButton;
 
     constructor() {
         super();
-        this.game = new Game();
+        this.endTurnButton = document.createElement('div');
+        this.endTurnButton.classList.add('end-turn-button');
     }
 
     render(): HTMLElement {
-        this.container.append(this.game.getGameCanvas());
+        this.endTurnButton.addEventListener('click', () => {
+            Game.endTurn()
+        })
+        this.container.append(Game.getGameCanvas());
+        Game.drawField();
         return this.container;
     }
 }

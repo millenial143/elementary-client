@@ -2,6 +2,7 @@ import Component from '../../index';
 import './Lobbies.css'
 import App from "../../../App";
 import ClientSocket from "../../../Net/Sockets/ClientSocket";
+import CreateLobbyPopup from "./CreateLobbyPopup";
 
 export default class Lobbies extends Component{
     static set lobbies(value: any[]) {
@@ -18,8 +19,11 @@ export default class Lobbies extends Component{
     private backButton;
     private buttonContainer;
 
+    private popup;
+
     constructor(/*lobbies: Lobby[]*/) {
         super();
+        this.popup = new CreateLobbyPopup().render();
      //   this.lobbies = lobbies;
 
         // element creation
@@ -80,6 +84,8 @@ export default class Lobbies extends Component{
     }
 
     render() :HTMLElement{
+        this.container.append(this.popup);
+
         this.backButton.addEventListener('click', (e) => {
            App.renderNewPage('start-menu');
         });
@@ -89,7 +95,7 @@ export default class Lobbies extends Component{
         });
 
         this.newLobbyButton.addEventListener('click', (e) => {
-            ClientSocket.createLobby();
+            this.popup.style.display = 'flex';
         });
 
         this.container.append(this.lobbiesWindow);

@@ -6,6 +6,7 @@ import StartMenu from "./Components/Pages/StartMenu/StartMenu";
 import Lobbies from "./Components/Pages/Lobbies/Lobbies";
 import Lobby from "./Components/Pages/Lobby/Lobby";
 import GamePage from "./Components/Pages/GamePage/GamePage";
+import AssetTools from "./Game/Packages/Tools/AssetTools";
 
 class App {
     private static container: HTMLElement | null;
@@ -30,6 +31,7 @@ class App {
                 pageHtmlContainer = new Lobby().render();
                 break;
             case 'game-page':
+
                 pageHtmlContainer = new GamePage().render();
                 break;
             default:
@@ -43,7 +45,8 @@ class App {
         }
     }
 
-    start(){
+    async start(){
+        await AssetTools.loadTextures();
         ClientSocket.initializeConnection();
         App.renderNewPage('start-menu');
     }

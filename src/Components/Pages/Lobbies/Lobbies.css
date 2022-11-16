@@ -63,3 +63,50 @@
 .new-lobby-button{
     margin-left: 11px;
 }
+
+
+
+
+.create-lobby-popup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin-top: -100px;
+    margin-left: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+}
+
+.create-lobby-popup>.popup{
+    width: 600px;
+    background-color: #131415;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 25px;
+}
+
+.create-lobby-popup>.popup>select,
+.create-lobby-popup>.popup>input
+{
+    margin-bottom: 25px;
+}
+
+.create-lobby-popup .button-container{
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-lobby-popup .button-create{
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid cornsilk;
+    cursor: pointer;
+}

@@ -1,5 +1,6 @@
 import {io, Socket} from "socket.io-client";
 import App from "../../App";
+import Game from "../../Game/Game";
 // test
 export default class ClientSocket{
     static socket: Socket | undefined;
@@ -27,12 +28,38 @@ export default class ClientSocket{
 
         ClientSocket.socket.on('startGame', (game) => {
             App.renderNewPage('game-page');
+
+            let events: string[] = [];
+
+            if (ClientSocket.socket){
+                ClientSocket.socket.on('initializeGameState', (field, gameState) => {
+                    //console.log(field);
+                    Game.initializeGameState(field, gameState);
+                });
+                events.push('initializeGameState');
+
+                ClientSocket.socket.on('updateGameState', (field, gameState) => {
+                    Game.updateGameState(field, gameState);
+                })
+                events.push('updateGameState');
+
+                ClientSocket.socket.once('endGame', () => {
+                    for (let i = 0; i < events.length; i++){
+                        ClientSocket.socket?.removeAllListeners(events[i]);
+                        Game.deleteGameState();
+                        App.renderNewPage('start-menu');
+                    }
+                })
+            }
+
         })
+
+
     }
 
-    public static createLobby(){
+    public static createLobby(params: object){
         if (ClientSocket.socket){
-            ClientSocket.socket.emit('createLobby', 'new lobby');
+            ClientSocket.socket.emit('requestCreateLobby', params);
         }
     }
 
