@@ -7,6 +7,7 @@ import Lobbies from "./Components/Pages/Lobbies/Lobbies";
 import Lobby from "./Components/Pages/Lobby/Lobby";
 import GamePage from "./Components/Pages/GamePage/GamePage";
 import AssetTools from "./Game/Packages/Tools/AssetTools";
+import Game from "./NewGame/Game";
 
 class App {
     private static container: HTMLElement | null;
@@ -31,7 +32,6 @@ class App {
                 pageHtmlContainer = new Lobby().render();
                 break;
             case 'game-page':
-
                 pageHtmlContainer = new GamePage().render();
                 break;
             default:
@@ -42,6 +42,10 @@ class App {
         if (this.container){
             this.container.innerHTML = '';
             this.container.append(pageHtmlContainer);
+            // КОСТЫЛЬ ЕБАНЫЙ
+            if (pageCode === 'game-page'){
+                Game.addGameCanvas();
+            }
         }
     }
 

@@ -1,6 +1,8 @@
 import {io, Socket} from "socket.io-client";
 import App from "../../App";
-import Game from "../../Game/Game";
+import Game from "../../NewGame/Game";
+import GamePage from "../../Components/Pages/GamePage/GamePage";
+
 // test
 export default class ClientSocket{
     static socket: Socket | undefined;
@@ -32,16 +34,22 @@ export default class ClientSocket{
             let events: string[] = [];
 
             if (ClientSocket.socket){
-                ClientSocket.socket.on('initializeGameState', (field, gameState) => {
+                /*ClientSocket.socket.on('initializeGameState', (field, gameState) => {
                     //console.log(field);
                     Game.initializeGameState(field, gameState);
                 });
-                events.push('initializeGameState');
+                events.push('initializeGameState');*/
 
-                ClientSocket.socket.on('updateGameState', (field, gameState) => {
-                    Game.updateGameState(field, gameState);
+                ClientSocket.socket.on('updateGameState', (field, units, side) => {
+                    Game.updateGameState(field, units, side);
                 })
                 events.push('updateGameState');
+
+                ClientSocket.socket.on('clientCommands', (cmds) => {
+                    Game.executeClientCommands(cmds);
+                    GamePage.endTurnAvalible();
+                })
+                events.push('clientCommands');
 
                 ClientSocket.socket.once('endGame', () => {
                     for (let i = 0; i < events.length; i++){
